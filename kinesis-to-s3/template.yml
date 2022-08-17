@@ -17,7 +17,7 @@ Resources:
   StreamDataBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "test_HEAD-deploy-bucket-${EnvName}"
+      BucketName: !Sub "test-HEAD-deploy-bucket-${EnvName}"
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -35,7 +35,7 @@ Resources:
       DeliveryStreamName: test_APC_HEAD
       DeliveryStreamType: DirectPut
       ExtendedS3DestinationConfiguration:
-        BucketARN: !Sub "arn:aws:s3:::test_HEAD-deploy-bucket-${EnvName}"
+        BucketARN: !Sub "arn:aws:s3:::test-HEAD-deploy-bucket-${EnvName}"
         BufferingHints:
           IntervalInSeconds: 60
           SizeInMBs: 64
