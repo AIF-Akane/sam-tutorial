@@ -17,7 +17,7 @@ Resources:
   StreamDataBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "test2-head-deploy-bucket-${EnvName}"
+      BucketName: !Sub "stream-data-head-deploy-bucket-${EnvName}"
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
