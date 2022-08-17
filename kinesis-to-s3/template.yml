@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description:  > 
-  CloudFormation APC_HEAD template 
+  CloudFormation APC_head template 
 
 Parameters:
   EnvName:
@@ -17,7 +17,7 @@ Resources:
   StreamDataBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "test-HEAD-deploy-bucket-${EnvName}"
+      BucketName: !Sub "test-head-deploy-bucket-${EnvName}"
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -32,10 +32,10 @@ Resources:
     Type: AWS::KinesisFirehose::DeliveryStream
     DependsOn: StreamDataBucket
     Properties:
-      DeliveryStreamName: test_APC_HEAD
+      DeliveryStreamName: test_APC_head
       DeliveryStreamType: DirectPut
       ExtendedS3DestinationConfiguration:
-        BucketARN: !Sub "arn:aws:s3:::test-HEAD-deploy-bucket-${EnvName}"
+        BucketARN: !Sub "arn:aws:s3:::test-head-deploy-bucket-${EnvName}"
         BufferingHints:
           IntervalInSeconds: 60
           SizeInMBs: 64
@@ -48,7 +48,7 @@ Resources:
           #   DurationInSeconds: 60
         CloudWatchLoggingOptions:
           Enabled: true
-          LogGroupName: /aws/kinesisfirehose/test_APC_HEAD
+          LogGroupName: /aws/kinesisfirehose/test_APC_head
           LogStreamName: S3Delivery       
         ProcessingConfiguration:
           Enabled: true
@@ -83,7 +83,7 @@ Resources:
   LogGroupFirehoseActivityLogs:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: /aws/kinesisfirehose/test_APC_HEAD
+      LogGroupName: /aws/kinesisfirehose/test_APC_head
       RetentionInDays: 365
 
 
