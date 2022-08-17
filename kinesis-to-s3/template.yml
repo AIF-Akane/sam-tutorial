@@ -17,7 +17,7 @@ Resources:
   StreamDataBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "test-head-deploy-bucket-${EnvName}"
+      BucketName: !Sub "test2-head-deploy-bucket-${EnvName}"
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -35,7 +35,7 @@ Resources:
       DeliveryStreamName: test_APC_head
       DeliveryStreamType: DirectPut
       ExtendedS3DestinationConfiguration:
-        BucketARN: !Sub "arn:aws:s3:::test-head-deploy-bucket-${EnvName}"
+        BucketARN: !Sub "arn:aws:s3:::test2-head-deploy-bucket-${EnvName}"
         BufferingHints:
           IntervalInSeconds: 60
           SizeInMBs: 64
@@ -63,7 +63,7 @@ Resources:
   FirehoseRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: KinesisFirehoseRole
+      RoleName: KinesisFirehoseRole2
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
